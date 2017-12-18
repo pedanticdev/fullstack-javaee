@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="DEFAULT_PU" transaction-type="JTA">
+    <class>com.pedantic.Department</class>
+    <class>com.pedantic.Employee</class>
+    <class>com.pedantic.entities.Department</class>
+    <class>com.pedantic.entities.Employee</class>
+    <class>com.pedantic.entities.Allowance</class>
+    <class>com.pedantic.entities.EmployeeAllowance</class>
+    <class>com.pedantic.entities.Tax</class>
+    <class>com.pedantic.entities.PayPeriod</class>
+    <class>com.pedantic.entities.Loan</class>
+    <class>com.pedantic.entities.EmployeeLoan</class>
+    <class>com.pedantic.entities.SocialSecurityRates</class>
+    <class>com.pedantic.entities.Bank</class>
+    <class>com.pedantic.entities.EmployeeBank</class>
+    <class>com.pedantic.entities.Payslip</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

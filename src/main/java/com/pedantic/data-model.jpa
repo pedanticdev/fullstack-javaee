@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="com.pedantic.entities" v="4.4" rws="_15135179731112" Pws="_15135179731112" cws="_15135179731112" sm="false" xs="false" id="_15135179731031" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractEntityPK" abs="false" class="AbstractEntity" v="true" jbn="false" xre="false" m="false" rootElement="_15135179731031" id="_1513518106314">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:id attribute-type="Long" v="true" xvt="" name="id" id="_15135181369644">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:version attribute-type="long" v="true" xvt="" name="version" id="_15135181537665">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:version>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:entity compositePrimaryKeyClass="DepartmentPK" abs="false" class="Department" superclassId="_1513518106314" v="true" jbn="false" xre="false" m="false" rootElement="_15135179731031" id="_1513518213219">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="name" id="_15135182767978">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1513518478177" connected-attribute-id="_151351975261227" v="true" xvt="" name="employees" id="_151351975261628">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Department.findAll">
+            <jpa:query>Select e from Department e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Department.findByName">
+            <jpa:query>Select d from Department d where d.name=:name</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="EmployeePK" abs="false" class="Employee" superclassId="_1513518106314" v="true" jbn="false" xre="false" m="false" rootElement="_15135179731031" id="_1513518478177">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="firstName" id="_151351856391811">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="First name cannot be blank"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="middleName" id="_151351857473212">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="lastName" id="_151351858129913">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Last name cannot be blank"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.time.LocalDate" v="true" xvt="" name="dob" id="_151351858668314">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Date of birth is required"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="basicSalary" id="_151351871730015">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Basic salary cannot be blank"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="ssNumber" id="_1513530926105463">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1513518213219" connected-attribute-id="_151351975261628" v="true" xvt="" name="department" id="_151351975261227">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many collection-type="java.util.List" connected-entity-id="_1513522152296" connected-attribute-id="_1513522571544127" v="true" name="employeeAllowances" id="_1513522571554128"/>
+            <jpa:one-to-many orp="false" collection-type="java.util.List" connected-entity-id="_1513525690046" connected-attribute-id="_1513525873306275" v="true" xvt="" name="employeeLoans" id="_1513525873309276">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-many>
+            <jpa:one-to-one primaryKey="false" connected-entity-id="_1513528984672" connected-attribute-id="_1513529075149364" v="true" name="employeeBank" id="_1513529075155365"/>
+            <jpa:one-to-one primaryKey="false" connected-entity-id="_1513530014594" connected-attribute-id="_1513530070942457" v="true" name="payslip" id="_1513530070945458"/>
+            <jpa:embedded connected-class-id="_1513519273994" v="true" xvt="" name="address" id="_151351951094024">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:embedded>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Employee.findAll">
+            <jpa:query>Select e from Employee e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Employee.findByFirstName">
+            <jpa:query>Select e from Employee e where e.firstName=:firstName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Employee.findByMiddleName">
+            <jpa:query>Select e from Employee e where e.middleName=:middleName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Employee.findByLastName">
+            <jpa:query>Select e from Employee e where e.lastName=:lastName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Employee.findByDob">
+            <jpa:query>Select e from Employee e where e.dob=:dob</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Employee.findByBasicSalary">
+            <jpa:query>Select e from Employee e where e.basicSalary=:basicSalary</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Employee.findBySsNumber">
+            <jpa:query>Select e from Employee e where e.ssNumber=:ssNumber</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="AllowancePK" abs="false" class="Allowance" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513522056333">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="allowanceName" id="_1513522077452119">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Allowance name must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="allowanceType" id="_1513522078285120">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Allowance type must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="isTaxable" id="_1513528146653281">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Allowance.findAll">
+            <jpa:query>Select e from Allowance e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Allowance.findByAllowanceName">
+            <jpa:query>Select a from Allowance a where a.allowanceName=:allowanceName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Allowance.findByAllowanceType">
+            <jpa:query>Select a from Allowance a where a.allowanceType=:allowanceType</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Allowance.findByAttribute2">
+            <jpa:query>Select a from Allowance a where a.attribute2=:attribute2</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Allowance.findByAttribute3">
+            <jpa:query>Select a from Allowance a where a.attribute3=:attribute3</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Allowance.findByIsTaxable">
+            <jpa:query>Select a from Allowance a where a.isTaxable=:isTaxable</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="EmployeeAllowancePK" abs="false" class="EmployeeAllowance" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513522152296">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="allowanceAmount" id="_1513522201316125">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1513518478177" connected-attribute-id="_1513522571554128" v="true" name="employee" id="_1513522571544127"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1513522056333" v="true" name="allowance" id="_1513522294418126"/>
+        </jpa:attributes>
+        <jpa:nq e="false" name="EmployeeAllowance.findAll">
+            <jpa:query>Select e from EmployeeAllowance e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="EmployeeAllowance.findByAllowanceAmount">
+            <jpa:query>Select e from EmployeeAllowance e where e.allowanceAmount=:allowanceAmount</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaxPK" abs="false" class="Tax" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513524156487">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="taxRate" id="_1513524179646210">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Tax rate must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Tax.findAll">
+            <jpa:query>Select e from Tax e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Tax.findByTaxRate">
+            <jpa:query>Select t from Tax t where t.taxRate=:taxRate</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PayPeriodPK" abs="false" class="PayPeriod" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513524211035">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.time.LocalDate" v="true" xvt="" name="startDate" ft="false" id="_1513524231015213">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Period start date must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.time.LocalDate" v="true" xvt="" name="endDate" id="_1513524236191214">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="periodType" id="_1513524262360215">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Period type must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:nq e="false" name="PayPeriod.findAll">
+            <jpa:query>Select e from PayPeriod e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PayPeriod.findByStartDate">
+            <jpa:query>Select p from PayPeriod p where p.startDate=:startDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PayPeriod.findByEndDate">
+            <jpa:query>Select p from PayPeriod p where p.endDate=:endDate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="PayPeriod.findByPeriodType">
+            <jpa:query>Select p from PayPeriod p where p.periodType=:periodType</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="LoanPK" abs="false" class="Loan" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513525596643">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="loanName" id="_1513525619732267">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Name is required"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="isRecurrent" id="_1513525622345268">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Loan.findAll">
+            <jpa:query>Select e from Loan e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Loan.findByLoanName">
+            <jpa:query>Select s from Loan s where s.loanName=:loanName</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Loan.findByIsRecurrent">
+            <jpa:query>Select s from Loan s where s.isRecurrent=:isRecurrent</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Loan.findByAttribute">
+            <jpa:query>Select l from Loan l where l.attribute=:attribute</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="EmployeeLoanPK" abs="false" class="EmployeeLoan" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513525690046">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="loanAmount" id="_1513525769493272">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Loan amount must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" xvt="" name="isCancelled" id="_1513525827878274">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1513518478177" connected-attribute-id="_1513525873309276" v="true" name="employee" id="_1513525873306275"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1513525596643" v="true" xvt="" name="loan" id="_1513525739493271">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-one>
+        </jpa:attributes>
+        <jpa:nq e="false" name="EmployeeLoan.findAll">
+            <jpa:query>Select e from EmployeeLoan e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="EmployeeLoan.findByLoanAmount">
+            <jpa:query>Select e from EmployeeLoan e where e.loanAmount=:loanAmount</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="EmployeeLoan.findByIsCancelled">
+            <jpa:query>Select e from EmployeeLoan e where e.isCancelled=:isCancelled</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SocialSecurityRatesPK" abs="false" class="SocialSecurityRates" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513525893385">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="employeeContributionRate" id="_1513525919940279">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Employee rate must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="employerContributionRate" id="_1513525920976280">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Employer rate must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:nq e="false" name="SocialSecurityRates.findAll">
+            <jpa:query>Select e from SocialSecurityRates e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SocialSecurityRates.findByEmployeeContributionRate">
+            <jpa:query>Select s from SocialSecurityRates s where s.employeeContributionRate=:employeeContributionRate</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="SocialSecurityRates.findByEmployerContributionRate">
+            <jpa:query>Select s from SocialSecurityRates s where s.employerContributionRate=:employerContributionRate</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="BankPK" abs="false" class="Bank" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513528928542">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="nameOfBank" id="_1513528951059356">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Bank name must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="defaultBranch" id="_1513528959203357"/>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Bank.findAll">
+            <jpa:query>Select e from Bank e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Bank.findByNameOfBank">
+            <jpa:query>Select b from Bank b where b.nameOfBank=:nameOfBank</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Bank.findByDefaultBranch">
+            <jpa:query>Select b from Bank b where b.defaultBranch=:defaultBranch</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="EmployeeBankPK" abs="false" class="EmployeeBank" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513528984672">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="accountNumber" id="_1513529018679360"/>
+            <jpa:basic attribute-type="String" v="true" name="branch" id="_1513529028164361"/>
+            <jpa:basic attribute-type="String" v="true" name="swift" id="_1513529036902362"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1513528928542" v="true" name="bank" id="_1513529056099363"/>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1513518478177" connected-attribute-id="_1513529075155365" v="true" xvt="" name="employee" id="_1513529075149364">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:one-to-one>
+        </jpa:attributes>
+        <jpa:nq e="false" name="EmployeeBank.findAll">
+            <jpa:query>Select e from EmployeeBank e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="EmployeeBank.findByAccountNumber">
+            <jpa:query>Select e from EmployeeBank e where e.accountNumber=:accountNumber</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="EmployeeBank.findByBranch">
+            <jpa:query>Select e from EmployeeBank e where e.branch=:branch</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="EmployeeBank.findBySwift">
+            <jpa:query>Select e from EmployeeBank e where e.swift=:swift</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PayslipPK" abs="false" class="Payslip" superclassId="_1513518106314" v="true" xre="false" m="false" rootElement="_15135179731031" id="_1513530014594">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="netPay" id="_1513530141889459">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="totalLoans" id="_1513530144449460">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.math.BigDecimal" v="true" xvt="" name="totalAllowances" id="_1513530149325461">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.time.LocalTime" v="true" xvt="" name="payPeriod" id="_1513530155200462">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:one-to-one own="true" primaryKey="false" connected-entity-id="_1513518478177" connected-attribute-id="_1513530070945458" v="true" name="employee" id="_1513530070942457"/>
+        </jpa:attributes>
+        <jpa:nq e="false" name="Payslip.findAll">
+            <jpa:query>Select e from Payslip e</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Payslip.findByNetPay">
+            <jpa:query>Select p from Payslip p where p.netPay=:netPay</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Payslip.findByTotalLoans">
+            <jpa:query>Select p from Payslip p where p.totalLoans=:totalLoans</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Payslip.findByTotalAllowances">
+            <jpa:query>Select p from Payslip p where p.totalAllowances=:totalAllowances</jpa:query>
+        </jpa:nq>
+        <jpa:nq e="false" name="Payslip.findByPayPeriod">
+            <jpa:query>Select p from Payslip p where p.payPeriod=:payPeriod</jpa:query>
+        </jpa:nq>
+    </jpa:entity>
+    <jpa:embeddable abs="false" class="Address" v="true" jbn="false" xre="false" m="false" rootElement="_15135179731031" id="_1513519273994">
+        <jpa:ath>pedantic</jpa:ath>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="street" id="_151351929272717">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Street address cannot be blank"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="tel" id="_151351929748518">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Telephone number must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="city" id="_151351930203519">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="stateName" id="_151351930546420">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="zipCode" id="_151351930945021">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Zip code must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="country" id="_151351932370522">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:bv>
+                    <jpa:nn m="Country must be set"/>
+                </jpa:bv>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </jpa:c>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15135179731112">
+            <i ref="_1513524211035" x="3" y="148"/>
+            <i ref="_1513524156487" x="12" y="36"/>
+            <i ref="_1513519273994" x="306" y="216"/>
+            <i ref="_1513522056333" x="549" y="36"/>
+            <i ref="_1513518213219" x="140" y="204"/>
+            <i ref="_1513528984672" x="253" y="451"/>
+            <i ref="_1513518106314" x="277" y="19"/>
+            <i ref="_1513525596643" x="756" y="273"/>
+            <i ref="_1513518478177" x="485" y="204"/>
+            <i ref="_1513522152296" x="751" y="103"/>
+            <i ref="_1513525690046" x="945" y="275"/>
+            <i ref="_1513530014594" x="752" y="436"/>
+            <i ref="_1513525893385" x="3" y="323"/>
+            <i ref="_1513528928542" x="102" y="424"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
