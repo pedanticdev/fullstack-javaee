@@ -8,20 +8,19 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 import java.util.Objects;
-import javax.persistence.Basic;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author pedantic
  */
 @Entity
+@NamedQueries({@NamedQuery(name=Employee.FIND_ALL_EMPLOYEES_QUERY, query="select e from Employee e order by e.lastName"),
+@NamedQuery(name = Employee.FIND_BY_SSNUMBER_QUERY, query = "select e from Employee e where e.ssNumber = :ssNumber")})
 public class Employee extends AbstractEntity {
 
+    public static final String FIND_ALL_EMPLOYEES_QUERY = "findAllEmployees";
+    public static final String FIND_BY_SSNUMBER_QUERY = "findBySSNumber";
     @Basic
     @NotNull(message = "First name cannot be blank")
     private String firstName;

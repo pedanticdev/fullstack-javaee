@@ -5,14 +5,23 @@ package com.pedantic.entities;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author pedantic
  */
 @Entity
+@NamedQueries({@NamedQuery(name=Allowance.GET_ALL_ALLOWANCES_QUERY,
+        query="select a from Allowance a order by a.allowanceName"),
+
+        @NamedQuery(name=Allowance.FIND_TAXABLE_ALLOWANCES,
+        query = "select a from Allowance a where a.isTaxable = :taxable")})
 public class Allowance extends AbstractEntity {
 
+    public static final String GET_ALL_ALLOWANCES_QUERY = "getAllAllowances";
+    public static final String FIND_TAXABLE_ALLOWANCES = "findTaxableAllowances";
     @Basic
     @NotNull(message = "Allowance name must be set")
     private String allowanceName;

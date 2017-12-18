@@ -4,24 +4,29 @@
 package com.pedantic.entities;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author pedantic
  */
 @Entity
+@NamedQueries({@NamedQuery(name=Department.FIND_ALL_DEPARTMENTS_QUERY,
+        query="select bazz from Department bazz order by bazz.name"),
+@NamedQuery(name = Department.FIND_DEPT_BY_NAME_QUERY,
+        query = "select d from Department d where d.name = :name")})
 public class Department extends AbstractEntity {
 
+    public static final String FIND_ALL_DEPARTMENTS_QUERY = "findAllDepartments";
+    public static final String FIND_DEPT_BY_NAME_QUERY = "findDeptByName";
     @Basic
     @NotNull
     private String name;
 
     @OneToMany(targetEntity = Employee.class, mappedBy = "department")
-    private Set<Employee> employees = new HashSet();
+    private Set<Employee> employees = new HashSet<>();
 
     public String getName() {
         return this.name;
@@ -39,4 +44,17 @@ public class Department extends AbstractEntity {
         this.employees = employees;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Department)) return false;
+        Department that = (Department) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name);
+    }
 }

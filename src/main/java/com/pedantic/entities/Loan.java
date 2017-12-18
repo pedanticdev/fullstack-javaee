@@ -5,14 +5,18 @@ package com.pedantic.entities;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author pedantic
  */
 @Entity
+@NamedQueries({@NamedQuery(name=Loan.GET_ALL_LOANS_QUERY,
+        query = "select l from Loan l order by l.loanName desc")})
 public class Loan extends AbstractEntity {
-
+    public static final String GET_ALL_LOANS_QUERY = "getAllLoans";
     @Basic
     @NotNull(message = "Name is required")
     private String loanName;

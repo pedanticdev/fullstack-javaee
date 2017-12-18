@@ -4,18 +4,18 @@
 package com.pedantic.entities;
 
 import java.math.BigDecimal;
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author pedantic
  */
 @Entity
+@NamedQueries({@NamedQuery(name=EmployeeLoan.GET_ALL_EMPLOYEE_LOANS_QUERY,
+        query="select eL from EmployeeLoan eL where eL.employee = :employee")})
 public class EmployeeLoan extends AbstractEntity {
 
+    public static final String GET_ALL_EMPLOYEE_LOANS_QUERY = "getAllEmployeeLoans";
     @Basic
     @NotNull(message = "Loan amount must be set")
     private BigDecimal loanAmount;
