@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -25,6 +26,10 @@ public class Employee extends AbstractEntity {
     @NotNull(message = "First name cannot be blank")
     private String firstName;
 
+    @PostConstruct
+    private void init() {
+
+    }
     @Basic
     private String middleName;
 

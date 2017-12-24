@@ -6,14 +6,16 @@ package com.pedantic.entities;
 import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author pedantic
  */
 @Entity
+@NamedQuery(name = Tax.GET_TAXES, query = "select t from Tax t")
 public class Tax extends AbstractEntity {
-
+    public static final String GET_TAXES = "getAllTaxes";
     @Basic
     @NotNull(message = "Tax rate must be set")
     private BigDecimal taxRate;
